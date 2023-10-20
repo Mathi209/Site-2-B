@@ -1,0 +1,160 @@
+body{
+    margin: 0;
+    background-color: black;
+    z-index: -2;
+}
+
+/*Javascript*/
+#prevBtn{
+    margin-left: 200px;
+    background-color: rgb(0, 80, 4);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    transition: ease-in 0.5s;
+}
+
+#prevBtn:hover{
+  background-color: chartreuse;
+}
+#nextBtn{
+    margin-left: 950px;
+    background-color: rgb(0, 80, 4);
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    transition: ease-in 0.5s;
+}
+#nextBtn:hover{
+  background-color: chartreuse;
+}
+.image-container {
+    display: flex;
+    overflow: hidden;
+    margin-left: 200px;
+  }
+.image a {
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    
+  }
+  
+  .image img {
+    width: 170px;
+    height: 220px;
+    display: flex;
+    border: black 1px solid;
+     
+  }
+
+/*Minha barra de procura open-source*/
+.pesquisa{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#searchInput {
+
+    margin-top: 60px;
+    height: 10px;
+    flex-wrap: nowrap;
+  }
+  
+  #searchInput{
+    padding: 10px;
+    border: 1px solid #ccc;
+ 
+    height: 20px;
+
+  }
+  
+  #searchInput:focus {
+    outline: none;
+    border-color: rgb(17, 145, 28);
+  }
+  
+  #search-button{
+
+    padding: 10px 15px;
+    background-color: rgb(0, 80, 4);
+    color: white;
+    border: none;
+
+    cursor: pointer;
+    height: 42px;
+    margin-top: 60px;
+
+   
+  }
+
+
+/*Cabeçalho*/
+
+.fundo{
+    position: relative;
+    
+}
+
+.fundo::before{
+    content: '';
+    background-image: url('filmes/papel.jpg');
+    background-size: cover;
+    filter: blur(4px); 
+    filter: brightness(50%);
+    position: absolute;
+    height: 1000px;
+    top: -24px;
+
+    width: 100%;
+  
+    z-index: -1;
+     
+}
+
+.cabeçalho{
+    margin: 0;
+    background-color: rgb(0, 71, 12);
+    height: 80px;
+    
+}
+
+.generos a{
+    font-size: 20px;
+    color: rgb(0, 150, 57);
+    background-color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 5px;
+    margin-top: 20px;
+    padding-left: 10px; padding-right: 10px;
+}
+
+.generos {
+    margin-left: 390px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+/*Introdução*/
+
+
+.intro{
+margin: 100px;
+}
+
+.intro h1{
+    font-size: 50px;
+color: #bdbdbd;
+margin: 0;
+text-transform: uppercase;
+}

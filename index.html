@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Netflix</title>
+    
+</head>
+
+
+<body>
+    
+ 
+
+    <section class="cabeçalho">                      <!--cabeçalho-->
+        
+    
+        <Div class="generos">
+            
+        <a href="">Terror</a>
+        <a href="">Drama</a>
+        <a href="">Comedia</a>
+        <a href="">classicos</a>
+        <a href="">Romance</a>
+        <a href="">suspence</a>
+        <a href="">Doramas</a>
+        </Div>
+
+</section>
+<div class="fundo">
+
+
+    
+</div>
+<section class="intro">
+    <h1>Bem-Vindo!</h1>
+    <h1>O que Gostaria de assistir?</h1>
+
+    <div class="pesquisa">
+        <button id="search-button">Procurar</button>
+    <input type="text" id="searchInput" placeholder="O que gostaria?" />
+
+</div>
+</section>
+
+<div class="image-container" id="imageContainer"></div>
+  <button id="prevBtn" onclick="showPrevImages()">&lt; ---</button>
+  <button id="nextBtn" onclick="showNextImages()">--- &gt;</button>
+
+
+  <script>
+    let images = [
+      'filmes/guerra dos mundos.png',
+      'filmes/hereditario.png',
+      'filmes/interestelar.png',
+      'filmes/megaromantico.png',
+      'filmes/midsummar.png',
+      'filmes/openheimer.png',
+      'filmes/tudo a todo lugar.png'
+      // Add more image URLs here
+    ];
+
+     // Add corresponding HTML links for each image
+     let htmlLinks = [
+      'filmes/Guerradosmundos.html',
+      'filmes/hereditario.html',
+      'filmes/interestelar.html',
+      'filmes/megaromantico.html',
+      'filmes/midsummar.html',
+      'filmes/openheimer.html',
+      'filmes/tudoatodolugar.html'
+      // Add more HTML file links here
+    ];
+
+    const numImagesToShow = 6;
+let startIndex = 0;
+
+function showImages(startIndex, searchQuery = '') {
+  const imageContainer = document.getElementById('imageContainer');
+  const transformValue = `translateX(-${startIndex * (150 + 20)}px)`; // Adjust based on image width + margin
+
+  imageContainer.style.transform = transformValue;
+
+  // Filter images based on searchQuery
+  const filteredImages = images.filter((image) =>
+    image.includes(searchQuery.toLowerCase())
+  );
+
+  // Create a mapping of image URLs to corresponding links
+  const imageToLinkMap = {};
+  for (let i = 0; i < images.length; i++) {
+    imageToLinkMap[images[i]] = htmlLinks[i];
+  }
+
+  // Display filtered images dynamically
+  const imagesToDisplay = filteredImages.slice(startIndex, startIndex + numImagesToShow);
+  imageContainer.innerHTML = '';
+
+  imagesToDisplay.forEach((image) => {
+    const imageLink = document.createElement('a');
+    imageLink.href = imageToLinkMap[image]; // Set the corresponding HTML link
+    imageLink.className = 'image';
+    const imageElement = document.createElement('img');
+    imageElement.src = image;
+    imageElement.alt = image;
+    imageLink.appendChild(imageElement);
+    imageContainer.appendChild(imageLink);
+  });
+}
+
+function showPrevImages() {
+  startIndex = Math.max(0, startIndex - numImagesToShow);
+  showImages(startIndex, document.getElementById('searchInput').value);
+}
+
+function showNextImages() {
+  const maxIndex = Math.max(0, images.length - numImagesToShow);
+  startIndex = Math.min(maxIndex, startIndex + numImagesToShow);
+  showImages(startIndex, document.getElementById('searchInput').value);
+}
+
+// Call the function when the page loads
+window.onload = () => {
+  showImages(startIndex);
+};
+
+// Add an event listener for the search input
+document.getElementById('searchInput').addEventListener('input', () => {
+  startIndex = 0; // Reset startIndex when searching
+  showImages(startIndex, document.getElementById('searchInput').value);
+});
+</script>
+
+</body>
+</html>
